@@ -1,46 +1,38 @@
 //back end
+function crpWord(array,col,index){
+  var string="";
+  for( var i = index;i < array.length; i += col){
+    string = string + array[i];
+  }
+  return string;
+};
+
 function cryptograph(stringToSplit){
   var array = stringToSplit.replace(/\W+/g, " ");
   array = array.replace(/\s/g, '');
   array = array.split("");
 
   var col = Math.floor(Math.sqrt(array.length))
-  alert(col);
   var arraySize = array.length;
   var crypArray = [];
-  var indexUpdate = -1;
+  var indexUpdate = 0;
   var count = 0;
-  alert(arraySize)
 
-  // for (var i = 0; i<col; ++i){
-  //   for (var i = 0; i<array.length; ++i){
-  //     if(count % col === 0){
-  //       crypArray.push(array[i])
-  //       count += 1;
-  //     }else{
-  //       count += 1;
-  //     }
-
-
-
-  for (var i = 0; i<array.length; ++i){
-    if(count % col === 0){
-      crypArray.push(array[i]);
-      count += 1;
-    }else{
-      count +=1;
-    };
-    if(count === array.length-1){
-      indexUpdate += 1;
-      if(!(indexUpdate === col)){
-        i = indexUpdate;
-        count = 0;
-      }
-    }
+  for(var i =0; i <col;++i){
+    crypArray.push(crpWord(array,col,indexUpdate))
+    indexUpdate +=1;
+  };
+  finalString = crypArray.join("");
+  finalArray = finalString.split("");
+  alert(finalString);
+  alert(finalArray);
+  for(var j =0;j<finalArray.length;j+=6){
+    finalArray.splice(j,0," ");
   }
-  return crypArray;
+  alert(finalArray);
+  finalString = finalArray.join("");
+  return finalString;
 };
-
 
 //front end
 $(document).ready(function(){
