@@ -24,12 +24,9 @@ function cryptograph(stringToSplit){
   };
   finalString = crypArray.join("");
   finalArray = finalString.split("");
-  alert(finalString);
-  alert(finalArray);
   for(var j =0;j<finalArray.length;j+=6){
     finalArray.splice(j,0," ");
   }
-  alert(finalArray);
   finalString = finalArray.join("");
   return finalString;
 };
